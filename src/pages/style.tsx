@@ -1,4 +1,4 @@
-import styled, { createGlobalStyle, ThemeProvider } from 'styled-components'
+import styled, { createGlobalStyle } from 'styled-components'
 
 const GlobalStyle = createGlobalStyle`
 
@@ -29,4 +29,6 @@ const HomeStyle = styled.main`
   /* padding: 50px; */
 `
 
-export { GlobalStyle, HomeStyle }
+export default HomeStyle
+
+export { GlobalStyle }
