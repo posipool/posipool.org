@@ -1,10 +1,8 @@
 import Head from 'next/head'
-import Image from 'next/image'
 import Button from '../components/Button'
 import Card from '../components/Card'
 import Logo from '../components/Logo'
-import BackgroundParticles from '../components/BackgroundParticles'
-import { FaCommentAlt, FaThumbsUp, FaRegEye } from 'react-icons/fa'
+import ParticleBackground from '../components/BackgroundParticles'
 import { HomeStyle } from './style'
 import { Description } from '../components/Card/style'
 
@@ -36,7 +34,7 @@ export default function Home() {
         </a>
       </footer>*/}
       </HomeStyle>
-      <BackgroundParticles />
+      <ParticleBackground />
     </>
   )
 }
