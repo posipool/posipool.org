@@ -7,7 +7,7 @@ const CardStyle = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  /* background-color: #00253c50; */
+  background-color: #00253c50;
   border-radius: 160px;
   /* width: 250px; */
   /* height: 200px; */
