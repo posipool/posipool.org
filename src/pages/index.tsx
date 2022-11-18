@@ -2,8 +2,8 @@ import Head from 'next/head'
 import Button from '../components/Button'
 import Card from '../components/Card'
 import Logo from '../components/Logo'
-import ParticleBackground from '../components/BackgroundParticles'
-import { HomeStyle } from './style'
+import BackgroundParticle from '../components/BackgroundParticles'
+import HomeStyle from './style'
 import { Description } from '../components/Card/style'
 
 export default function Home() {
@@ -34,7 +34,7 @@ export default function Home() {
         </a>
       </footer>*/}
       </HomeStyle>
-      <ParticleBackground />
+      <BackgroundParticle />
     </>
   )
 }
