@@ -12,7 +12,7 @@
 </style>
 </defs>
 <rect x="0" y="0" width="100%" height="100%" fill="transparent"></rect>
-<g transform="matrix(Infinity NaN NaN Infinity 0 0)" id="3636b9aa-72f9-4839-b6ae-0d4a68363f40"  >
+<g transform="scale(0.1)" id="3636b9aa-72f9-4839-b6ae-0d4a68363f40"  >
 </g>
 <g transform="matrix(1 0 0 1 540 150)" id="cabb1f48-2fad-45f7-bccd-926c3e04220c"  >
 <rect style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(255,255,255); fill-rule: nonzero; opacity: 1; visibility: hidden;" vector-effect="non-scaling-stroke"  x="-540" y="-150" rx="0" ry="0" width="1080" height="300" />
