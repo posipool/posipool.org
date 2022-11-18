@@ -1,9 +1,0 @@
-dist
-node_modules
-*.md
-**/*.yaml
-coverage
-newrelic.js
-.prettierrc.js
-.eslintrc.js
-jest.config.ts
