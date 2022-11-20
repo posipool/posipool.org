@@ -11,8 +11,12 @@ export default function Home() {
     <>
       <Head>
         <title>Posi Pool</title>
-        <meta name="description" content="The trust DEFI is in the Posi Pool" />
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <meta property="og:title" content="Posi Pool" />
+        <meta property="og:description" content="The official pool of Posi holders" />
+        <meta property="og:url" content="https://posipool.org" />
+        <meta property="og:image" content="/posipool-logo-metatags.svg" />
+        <meta property="og:type" content="website" />
       </Head>
       <HomeStyle>
         <Card>
