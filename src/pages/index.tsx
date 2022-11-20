@@ -15,7 +15,7 @@ export default function Home() {
         <meta property="og:title" content="Posi Pool" />
         <meta property="og:description" content="The official pool of Posi holders" />
         <meta property="og:url" content="https://posipool.org" />
-        <meta property="og:image" content="/posipool-logo-metatags.svg" />
+        <meta property="og:image" content="https://posipool.org/posipool-logo-metatags.svg" />
         <meta property="og:type" content="website" />
       </Head>
       <HomeStyle>
