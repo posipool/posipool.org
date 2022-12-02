@@ -21,7 +21,7 @@ export default function Home() {
       <HomeStyle>
         <Card>
           <Logo />
-          <Description>Your financial freedom starts here!</Description>
+          <Description>The official pool of Posi holders</Description>
           <Button href="https://staking.posichain.org/validators/mainnet/0x6a29a4a51B26d35B304190aA716f99C8186d649A">
             Posi Validator
           </Button>
