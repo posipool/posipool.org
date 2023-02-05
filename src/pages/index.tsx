@@ -10,7 +10,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Posi Pool</title>
+        <title>Posi Pool Test</title>
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <meta property="og:title" content="Posi Pool" />
         <meta property="og:description" content="The official pool of Posi holders" />
@@ -21,7 +21,7 @@ export default function Home() {
       <HomeStyle>
         <Card>
           <Logo />
-          <Description>Your financial freedom starts here!</Description>
+          <Description>Adachi to the moon!</Description>
           <Button href="https://staking.posichain.org/validators/mainnet/0x6a29a4a51B26d35B304190aA716f99C8186d649A">
             Posi Validator
           </Button>
