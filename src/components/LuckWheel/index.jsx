@@ -17,7 +17,7 @@ import Div from './style'
       {
         radius: "10%",
         pointer: false,
-        fonts: [{ text: "Spin", top: "-10px", fontColor: 'white', rotate: true }],
+        fonts: [{ text: "Rodar", top: "-10px", fontColor: 'white', rotate: true }],
         // imgs: [{src: 'https://images.freeimages.com/images/previews/531/letter-c-1641882.png', top: -150, width: '100%'}]
       },
     ];
