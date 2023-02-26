@@ -2,6 +2,8 @@ import Image from "next/image"
 import styled from "styled-components"
 import Wheel from "../../components/LuckWheel"
 import { ConnectWallet, Web3Button } from "@thirdweb-dev/react"
+import sdk,{ SmartContract } from "@thirdweb-dev/sdk"
+import { BaseContract } from "ethers"
 
 const LogoContainer = styled.div`
   z-index: 999;
@@ -12,6 +14,15 @@ const LogoContainer = styled.div`
   justify-content: center;
   align-items: center;
 `
+
+async function getContractBalance(contract: SmartContract<BaseContract>){
+  // console.log(contract);
+  // contract.call('')
+  const balance = await contract.call('spin')
+  // console.log(Number(balance));  
+  console.log(balance);
+}
+
 export default function Lottery(){
     return <>
         <ConnectWallet 
@@ -340,7 +351,7 @@ export default function Lottery(){
               "type": "function"
             }
           ]}
-          action={(contract) => console.log({contract})}
+          action={getContractBalance}
           onError={(error)=> console.log(error)}
         >
           Spin
