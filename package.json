@@ -9,6 +9,10 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@chakra-ui/icons": "^2.0.17",
+    "@chakra-ui/react": "^2.5.1",
+    "@emotion/react": "^11.10.6",
+    "@emotion/styled": "^11.10.6",
     "@lucky-canvas/react": "^0.1.13",
     "@next/font": "^13.0.4",
     "@sentry/nextjs": "^7.20.0",
@@ -21,6 +25,7 @@
     "eslint": "8.27.0",
     "eslint-config-next": "13.0.4",
     "ethers": "^5.7.2",
+    "framer-motion": "^10.0.0",
     "next": "13.0.4",
     "react": "18.2.0",
     "react-confetti-explosion": "^2.0.2",
