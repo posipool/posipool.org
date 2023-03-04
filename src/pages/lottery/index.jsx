@@ -14,11 +14,6 @@ const LogoContainer = styled.div`
 `
 export default function Lottery(){
     return <>
-        <ConnectWallet 
-          accentColor="#1E90FF"
-          colorMode="dark"
-          className="btn-connect-wallet"
-        />
         <LogoContainer>
         <Image src={'/posipool-shadow.png'} alt="Posi brand" width={65} height={65} />
         </LogoContainer>
