@@ -6,6 +6,8 @@ import { ThemeProvider } from 'styled-components'
 import { Poppins } from '@next/font/google'
 import { ThirdwebProvider } from "@thirdweb-dev/react";
 import { HarmonyTestnetShard0 } from '@thirdweb-dev/chains'
+import Navbar from '../components/Navbar'
+import { ChakraProvider } from '@chakra-ui/react'
 const theme = {}
 
 const poppins = Poppins({ weight: '500', subsets: ['latin'] })
@@ -28,7 +30,10 @@ export default function App({ Component, pageProps }: AppProps) {
           isDarkMode: true
         }}
         >
-          <Component {...pageProps} />
+          <ChakraProvider>
+            <Navbar></Navbar>
+            <Component {...pageProps} />
+          </ChakraProvider>
         </ThirdwebProvider>
       </ThemeProvider>
     </main>
