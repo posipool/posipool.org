@@ -1,11 +1,26 @@
 import React, { useEffect, useState } from 'react';
-import {LuckyWheel} from '@lucky-canvas/react'
+//@ts-ignore
+import {LuckWheelPrize, LuckyWheel} from '@lucky-canvas/react'
 import { useReward } from 'react-rewards';
 import Div from './style'
+import { Web3Button } from '@thirdweb-dev/react';
+import style from "./style.module.css"
+import Image from "next/image"
+import styled from "styled-components"
 
-  export default function Wheel (props) {
-    const [prize, setPrize] = useState()
-    const myLucky = React.useRef();
+  const LogoContainer = styled.div`
+    z-index: 999;
+    position: relative;
+    bottom: -15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  `
+
+  export default function LuckyWheelWithButtonAndPanel (props: WheelProps) {
+    const [prize, setPrize] = useState<number>()
+    const myLucky = React.useRef<LuckyWheel>(null);
     const { reward, isAnimating } = useReward('rewardId', 'confetti', {zIndex: 9999999, lifetime: 200, angle: 85, onAnimationComplete: ()=> {console.log('completou')}  });
     useEffect(()=> {
       setPrize((Math.random() * 6) >> 0)
@@ -32,37 +47,74 @@ import Div from './style'
     })
 
     function onSuccess() {
+      setTimeout(() => {
+        myLucky.current?.stop(4);
+      }, 5000);
       console.log('success')
     }
 
     function onStart() {
-      myLucky.current.play();
-      setTimeout(() => {
-        myLucky.current.stop(prize);
-      }, 5000);
+      myLucky.current?.play();
+      onSuccess()
       console.log('start')
     }
 
-    function onEnd(prize) {
-      console.log()
+    function onEnd(prize: LuckWheelPrize) {
+      console.log(prize.fonts[0].text)
       console.log('Sorteado: ' + prize.fonts[0].text)
       prize.fonts[0].text != 'Lose' && reward()
     }
 return <>
     <Div id="rewardId">
+    <LogoContainer>
+      <Image src={'/posipool-shadow.png'} alt="Posi brand" width={65} height={65} />
+    </LogoContainer>
+    
     <LuckyWheel
+        ref={myLucky}
         defaultConfig={{speed:22, gutter: 1, accelerationTime: 2500, decelerationTime: 3000}}
         // activeStyle={{fontColor: 'pink', fontSize: 25, fontWeight: 50, background: 'red', shadow: ''}}
-        ref={myLucky}
         width="350px"
         height="350px"
         prizes={prizes}
         buttons={buttons}
-        onSuccess={onSuccess}
-        // onStart={onStart}
-        onEnd={onEnd} 
+        onStart={onStart}
+        onEnd={(a:any)=> {
+          onEnd(a)
+        }} 
         />
-        <button onClick={onStart}>Spin</button>
+
+        <Web3Button
+        className={style['spin-button']}
+        accentColor="#0a93eb"
+        onSuccess={(contract)=> {
+          console.log(contract)
+        }}
+        // onSubmit={()=> console.log('chamada enviada')}
+        contractAddress={props.contract.address}
+        contractAbi={props.contract.abi}
+        action={async (contract) => {
+          console.log({contract})
+          // Executar chamada do contract aqui
+          await dummyContractCall(1000)
+          onStart()
+          }}
+          onError={(error)=> console.log(error)}
+        >Spin</Web3Button>
         </Div>
   </>
+  }
+  
+  async function dummyContractCall(time: number) {
+    const result = Math.random()
+    return new Promise((resolve, reject) =>
+    setTimeout(() => {
+      if(result < 0.5){
+        console.log(result,'testando');
+        resolve(resolve)
+      }else{
+        reject(result + ' falhou')
+      }
+    }, time)
+    )
   }
