@@ -1,6 +1,6 @@
 import Image from "next/image"
 import styled from "styled-components"
-import Wheel from "../../components/LuckWheel"
+import Wheel from "../../components/LuckyWheelWithButtonAndPanel"
 import { ConnectWallet, Web3Button } from "@thirdweb-dev/react"
 
 const LogoContainer = styled.div`

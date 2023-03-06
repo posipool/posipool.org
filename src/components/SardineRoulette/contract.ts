@@ -290,7 +290,9 @@ const abi = [
   }
 ]
 
-export default {
+const contract = {
   address,
   abi
 }
+
+export default contract
