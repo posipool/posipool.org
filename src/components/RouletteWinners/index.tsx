@@ -25,7 +25,7 @@ export default function RouletteWinners(){
                         const prizeIndex = event.data.prize.name
                         const address = event.data.player
                         const shortenedAddress: string = address.slice(0, 6) + "..." + address.slice(-4);
-                        return <Center display="flex" justifyContent="space-between">
+                        return <Center display="flex" justifyContent="space-between" key={index}>
                             <GridItem key={index + prizeIndex }>{event.data.prize.name}</GridItem>
                             <GridItem>{shortenedAddress}</GridItem>
                         </Center>
