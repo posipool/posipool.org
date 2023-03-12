@@ -289,8 +289,8 @@ const abi = [
     "type": "function"
   }
 ]
-
-export default {
+const contract = {
   address,
   abi
 }
+export default contract
