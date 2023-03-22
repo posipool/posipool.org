@@ -21,7 +21,6 @@ export default function RouletteWinners(props: RouletteWinnersProps){
 
     useEffect(()=> {
         if(props.rouletteWinner){
-            console.log('testando');
             const allPrizes = [...awardHistory, {prize: props.rouletteWinner.name, transactionHash}]
             if (allPrizes.length > 16){
                 allPrizes.splice(0, allPrizes.length - 16)
@@ -51,7 +50,7 @@ export default function RouletteWinners(props: RouletteWinnersProps){
                         const shortenedHash: string = award.transactionHash?.slice(0, 6) + "..." + award.transactionHash?.slice(-4);
                         return <Center paddingTop={0.49} display="flex" justifyContent="space-between" key={index}>
                             <GridItem key={props.rouletteWinner?.id}>{prizesName[prizesName.indexOf(award.prize.replace('_', ' '))]}</GridItem>
-                            <GridItem><a style={{color: '#0182FF'}} href={`https://explorer.testnet.harmony.one/tx/${award.transactionHash}`} target="_blank">{shortenedHash}</a></GridItem>
+                            <GridItem><a style={{color: '#0182FF'}} href={`https://explorer.testnet.harmony.one/tx/${award.transactionHash}`} target="_blank" rel="noreferrer">{shortenedHash}</a></GridItem>
                         </Center>
                     })
                 }
