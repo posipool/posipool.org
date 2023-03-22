@@ -1,33 +1,57 @@
-import { useContractEvents, useContract } from "@thirdweb-dev/react";
-import { Card,CardHeader , CardBody, CardFooter, Center, Grid, GridItem } from '@chakra-ui/react'
+import { useAddress, useContract, useContractEvents } from "@thirdweb-dev/react";
+import { Card , CardBody, Center, Divider, Grid, GridItem } from '@chakra-ui/react'
+import {useEffect, useState} from 'react'
 
-export default function RouletteWinners(){
-    const contractAddress = '0x9F72BFC848179f2b0a02048031F494ee4cEC7674'
-    const { contract } = useContract(contractAddress);
-    const { data, isLoading, error } = useContractEvents(contract, "RewardLog");
-    // console.log({data: data?.length && data[0].data, isLoading, error});
-    console.log({data});
-    
+export default function RouletteWinners(props: RouletteWinnersProps){
+    interface PrizeHistory {
+        prize: string
+        transactionHash: string | null
+    }
+    const [awardHistory, setAwardHistory] = useState<PrizeHistory[]>([])
+    const prizesName = ['Lose', '2 Posi', '0.5 Posi', '3 Posi', '1 Spin', '4 Posi', '5 Posi']
+    const transactionHash = props.contract?.receipt.transactionHash
+    // const { data, isLoading, error } = useContractEvents(props.contract, "spinEvent", {queryFilter: {filters:{address: useAddress()} } , subscribe: true});
+    useEffect(()=> {
+        const history: PrizeHistory[] = JSON.parse(localStorage.getItem('allPrizes') as string)
+        if(history && history.length > 0){
+            console.log({history});
+            setAwardHistory(history)
+        }
+    },[])
+
+    useEffect(()=> {
+        if(props.rouletteWinner){
+            console.log('testando');
+            const allPrizes = [...awardHistory, {prize: props.rouletteWinner.name, transactionHash}]
+            if (allPrizes.length > 16){
+                allPrizes.splice(0, allPrizes.length - 16)
+            }
+            localStorage.setItem('allPrizes', JSON.stringify(allPrizes))
+            setAwardHistory(allPrizes)
+        }
+    },[props.rouletteWinner])
     {/* <Center> */}
     return <Card
             marginTop={5}
-            // backgroundColor="#1A202C"
-            // borderColor='white'
-            // borderWidth={1}
+            backgroundColor="#1A202C"
+            borderColor='white'
+            borderWidth={1}
             width={350}
-            height={350}
+            height={450}
         >
             <CardBody>
                 <Grid>
-                <div style={{fontSize: 18}}>All Results:</div>
+                    <Center fontSize={18} justifyContent={'space-between'}>
+                        <GridItem>Prize</GridItem>
+                        <GridItem>Transactions</GridItem>
+                        </Center>
+                        <Divider></Divider>
                 {
-                    data?.slice(0,12).map((event: any, index: number) => {
-                        const prizeIndex = event.data.prize.name
-                        const address = event.data.player
-                        const shortenedAddress: string = address.slice(0, 6) + "..." + address.slice(-4);
-                        return <Center display="flex" justifyContent="space-between" key={index}>
-                            <GridItem key={index + prizeIndex }>{event.data.prize.name}</GridItem>
-                            <GridItem>{shortenedAddress}</GridItem>
+                    awardHistory.length > 0 && awardHistory.slice(0,16).reverse().map((award: PrizeHistory, index: number) => {
+                        const shortenedHash: string = award.transactionHash?.slice(0, 6) + "..." + award.transactionHash?.slice(-4);
+                        return <Center paddingTop={0.49} display="flex" justifyContent="space-between" key={index}>
+                            <GridItem key={props.rouletteWinner?.id}>{prizesName[prizesName.indexOf(award.prize.replace('_', ' '))]}</GridItem>
+                            <GridItem><a style={{color: '#0182FF'}} href={`https://explorer.testnet.harmony.one/tx/${award.transactionHash}`} target="_blank">{shortenedHash}</a></GridItem>
                         </Center>
                     })
                 }
