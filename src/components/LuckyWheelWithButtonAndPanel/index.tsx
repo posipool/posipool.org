@@ -3,13 +3,14 @@ import React, { useEffect, useState } from 'react';
 import {LuckWheelPrize, LuckyWheel} from '@lucky-canvas/react'
 import { useReward } from 'react-rewards';
 import Div from './style'
-import { Web3Button, useAddress } from '@thirdweb-dev/react';
+import { Web3Button, useAddress, useContract } from '@thirdweb-dev/react';
 import style from "./style.module.css"
 import Image from "next/image"
 import styled from "styled-components"
 import { SmartContract } from '@thirdweb-dev/sdk';
 import RouletteWinners from '../RouletteWinners';
 import { Button } from '@chakra-ui/react';
+import RouletteInfoCard from '../RouletteInfoCard';
 
   const LogoContainer = styled.div`
     z-index: 999;
@@ -147,5 +148,6 @@ import { Button } from '@chakra-ui/react';
         <Button isDisabled={isSpinning || (amountOfSpin === 30)} marginTop={2} width={3} height={'34px'} onClick={handleIncrement}>+</Button>
         </div>
         </Div>
+        <RouletteInfoCard rouletteWinner={rouletteWinner} drawResult={drawResult} amountOfSpin={amountOfSpin} contract={props.contract.address}/>
   </>
   }
