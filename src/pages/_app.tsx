@@ -8,7 +8,7 @@ import { ThirdwebProvider } from "@thirdweb-dev/react";
 import { PosichainShard0, HarmonyShard0 } from '@thirdweb-dev/chains'
 import Navbar from '../components/Navbar'
 import { ChakraProvider } from '@chakra-ui/react'
-const theme = {}
+import theme from '../_theme'
 
 const poppins = Poppins({ weight: '500', subsets: ['latin'] })
 
@@ -28,7 +28,7 @@ export default function App({ Component, pageProps }: AppProps) {
           isDarkMode: true
         }}
         >
-          <ChakraProvider>
+          <ChakraProvider theme={theme}>
             <Navbar></Navbar>
             <Component {...pageProps} />
           </ChakraProvider>
