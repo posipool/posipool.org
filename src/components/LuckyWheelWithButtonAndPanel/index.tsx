@@ -36,21 +36,21 @@ import RouletteInfoCard from '../RouletteInfoCard';
       {
         radius: "10%",
         pointer: false,
-        fonts: [{ text: "Spin", top: "-10px", fontColor: 'white', rotate: true }],
-        // imgs: [{src: 'https://images.freeimages.com/images/previews/531/letter-c-1641882.png', top: -150, width: '100%'}]
+        // fonts: [{ text: "Spin", top: "-10px", fontColor: 'white', rotate: true }],
+        imgs: [{src: 'posipool-logo-oficial.svg', top: -15, width: '100%'}]
       },
     ];
     const accelerationTime = 2500
     const decelerationTime = 2500
     const stopRouletteTime = 5000
     const prizesName = ['LOSE', '2 POSI', '0.5 POSI', '3 POSI','LOSE', '1 SPIN', '0.5 POSI', '4 POSI', 'LOSE', '5 POSI', '0.5 POSI', '1 SPIN']
-    const  fontSize = 20
+    const  fontSize = 15
     const background2 = "white"
     const address = useAddress()
 
     const prizes = prizesName.map((prizeName, index) => {
-      return (index % 2)? { background, imgs: [{src: '/moneybag2.png', top: 50, width: 80}], fonts: [{ text: prizeName, top: 25, fontColor: 'white', fontSize }], } :
-      { background: background2, fonts: [{ text: prizeName, top: 25, fontColor:  (prizeName ==='LOSE')? '#3d0710':'#0865a1', fontSize }] }
+      return (index % 2)? { background, fonts: [{ text: prizeName, top: 25, fontColor: 'white', fontSize }], } :
+      { background: background2, imgs: [{src: 'posipool-logo-metatags.svg', top: 65, width: 45}],fonts: [{ text: prizeName, top: 25, fontColor:  (prizeName ==='LOSE')? '#3d0710':'#0865a1', fontSize }] }
     })
 
     async function onSuccess(resultado: number) {
