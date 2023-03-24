@@ -43,14 +43,14 @@ import RouletteInfoCard from '../RouletteInfoCard';
     const accelerationTime = 2500
     const decelerationTime = 2500
     const stopRouletteTime = 5000
-    const prizesName = ['Lose', '2 Posi', '0.5 Posi', '3 Posi','Lose', '1 Spin', '0.5 Posi', '4 Posi', '4 Posi', '4 Posi', '5 Posi', '1 Spin']
+    const prizesName = ['LOSE', '2 POSI', '0.5 POSI', '3 POSI','LOSE', '1 SPIN', '0.5 POSI', '4 POSI', 'LOSE', '5 POSI', '0.5 POSI', '1 SPIN']
     const  fontSize = 20
     const background2 = "white"
     const address = useAddress()
 
     const prizes = prizesName.map((prizeName, index) => {
       return (index % 2)? { background, imgs: [{src: '/moneybag2.png', top: 50, width: 80}], fonts: [{ text: prizeName, top: 25, fontColor: 'white', fontSize }], } :
-      { background: background2, fonts: [{ text: prizeName, top: 25, fontColor:  (prizeName ==='Lose')? '#3d0710':'#0865a1', fontSize }] }
+      { background: background2, fonts: [{ text: prizeName, top: 25, fontColor:  (prizeName ==='LOSE')? '#3d0710':'#0865a1', fontSize }] }
     })
 
     async function onSuccess(resultado: number) {
@@ -67,7 +67,7 @@ import RouletteInfoCard from '../RouletteInfoCard';
 
     function onEnd(prize: LuckWheelPrize) {
       console.log('Prize: ' + prize.fonts[0].text)
-      prize.fonts[0].text != 'Lose' && reward()
+      prize.fonts[0].text != 'LOSE' && reward()
       setRouletteWinners({name: prize.fonts[0].text, id: Date.now()})
       setIsSpinning(false)
     }

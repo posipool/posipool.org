@@ -8,7 +8,7 @@ export default function RouletteWinners(props: RouletteWinnersProps){
         transactionHash: string | null
     }
     const [awardHistory, setAwardHistory] = useState<PrizeHistory[]>([])
-    const prizesName = ['Lose', '2 Posi', '0.5 Posi', '3 Posi', '1 Spin', '4 Posi', '5 Posi']
+    const prizesName = ['LOSE', '2 POSI', '0.5 POSI', '3 POSI', '1 SPIN', '4 POSI', '5 POSI']
     const transactionHash = props.contract?.receipt.transactionHash
     // const { data, isLoading, error } = useContractEvents(props.contract, "spinEvent", {queryFilter: {filters:{address: useAddress()} } , subscribe: true});
     useEffect(()=> {
