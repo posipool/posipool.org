@@ -5,7 +5,7 @@ import { ThemeProvider } from 'styled-components'
 // import { theme } from '../theme'
 import { Poppins } from '@next/font/google'
 import { ThirdwebProvider } from "@thirdweb-dev/react";
-import { PosichainShard0 } from '@thirdweb-dev/chains'
+import { PosichainShard0, HarmonyShard0 } from '@thirdweb-dev/chains'
 import Navbar from '../components/Navbar'
 import { ChakraProvider } from '@chakra-ui/react'
 const theme = {}
@@ -18,10 +18,8 @@ export default function App({ Component, pageProps }: AppProps) {
       <GlobalStyle />
       <ThemeProvider theme={theme}>
         <ThirdwebProvider 
-        activeChain={{
-          ...PosichainShard0,
-          rpc: [PosichainShard0.rpc[1]]
-        }}
+      supportedChains={[]}
+       activeChain={PosichainShard0}
         dAppMeta={{
           name: 'Posi Pool',
           description: 'Your finacial freedon start here!',
