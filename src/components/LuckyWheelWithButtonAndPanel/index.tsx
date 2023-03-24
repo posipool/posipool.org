@@ -80,7 +80,7 @@ import RouletteInfoCard from '../RouletteInfoCard';
       })
       setDrawResult(resultsList)
       for(const result of resultsList.receipt.events[0].args[1]) {
-        await spinRoulette(prizesName.indexOf(result.replace('_', ' ')))
+        await spinRoulette(getRandomIndex(result))
       }
       return resultsList
     }
@@ -103,6 +103,12 @@ import RouletteInfoCard from '../RouletteInfoCard';
           resolve()
         }, time);
       })
+    }
+
+    function getRandomIndex(_prize: string): number {
+      let result = prizesName.map((x, i) => x == _prize.replace('_', ' ') ? i: -1).filter(i => i >= 0 );
+      let rnd = parseInt((result.length - (Math.random() * result.length)).toString());
+      return result[rnd]
     }
   return <>
   <RouletteWinners rouletteWinner={rouletteWinner} contract={drawResult}></RouletteWinners>
