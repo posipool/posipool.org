@@ -37,7 +37,7 @@ const NavLink = (props: Props) => (
 const MenuLinks = [{name:'Home',href:'/'}, {name: 'Roulettes', href: '/sardine-roulette'}];
 
 export default function Nav() {
-  const { colorMode, toggleColorMode } = useColorMode();
+  // const { colorMode, toggleColorMode } = useColorMode();
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
@@ -72,11 +72,11 @@ export default function Nav() {
             </HStack>
           </HStack>
           <Flex alignItems={'center'}>
-            <Stack direction={'row'} spacing={8} paddingRight={4}>
+            {/* <Stack direction={'row'} spacing={8} paddingRight={4}>
               <Button onClick={toggleColorMode}>
                 {colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
               </Button>
-            </Stack>
+            </Stack> */}
             <ConnectWallet 
               accentColor="#1E90FF"
               colorMode="dark"
