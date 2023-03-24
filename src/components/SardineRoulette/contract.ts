@@ -1,13 +1,7 @@
-const address: string = '0x9F72BFC848179f2b0a02048031F494ee4cEC7674'
+const address: string = '0x775798455B6AE7a50627cE7DDF77C3EA93ea317a'
 const abi = [
   {
-    "inputs": [
-      {
-        "internalType": "uint16",
-        "name": "_ticketPrice",
-        "type": "uint16"
-      }
-    ],
+    "inputs": [],
     "stateMutability": "nonpayable",
     "type": "constructor"
   },
@@ -16,41 +10,169 @@ const abi = [
     "inputs": [
       {
         "indexed": true,
-        "internalType": "string",
-        "name": "action",
-        "type": "string"
-      },
-      {
-        "indexed": true,
         "internalType": "address",
-        "name": "player",
+        "name": "",
         "type": "address"
       },
       {
         "indexed": false,
-        "internalType": "uint256",
-        "name": "timestamp",
-        "type": "uint256"
+        "internalType": "string[]",
+        "name": "",
+        "type": "string[]"
       },
       {
         "indexed": false,
         "internalType": "uint256",
-        "name": "blocknumber",
+        "name": "",
         "type": "uint256"
       }
     ],
-    "name": "ActionLog",
+    "name": "spinEvent",
     "type": "event"
   },
   {
-    "anonymous": false,
+    "inputs": [],
+    "name": "destroy",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "getWeiBalance",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
     "inputs": [
       {
-        "indexed": true,
         "internalType": "address",
-        "name": "player",
+        "name": "_player",
         "type": "address"
       },
+      {
+        "internalType": "uint256",
+        "name": "_spins",
+        "type": "uint256"
+      }
+    ],
+    "name": "getWeiPrice",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "locked",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "owner",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "name": "playerInfo",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "spins",
+        "type": "uint256"
+      },
+      {
+        "internalType": "bool",
+        "name": "blocked",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "name": "prizes",
+    "outputs": [
+      {
+        "internalType": "string",
+        "name": "name",
+        "type": "string"
+      },
+      {
+        "internalType": "uint256",
+        "name": "posis",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "spins",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "weight",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bool",
+        "name": "_enabled",
+        "type": "bool"
+      }
+    ],
+    "name": "setLock",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
       {
         "components": [
           {
@@ -59,65 +181,79 @@ const abi = [
             "type": "string"
           },
           {
-            "internalType": "uint8",
-            "name": "weight",
-            "type": "uint8"
-          },
-          {
-            "internalType": "uint8",
+            "internalType": "uint256",
             "name": "posis",
-            "type": "uint8"
+            "type": "uint256"
           },
           {
-            "internalType": "uint8",
-            "name": "tickets",
-            "type": "uint8"
+            "internalType": "uint256",
+            "name": "spins",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "weight",
+            "type": "uint256"
           }
         ],
-        "indexed": false,
-        "internalType": "struct Lukywheel.Prize",
-        "name": "prize",
-        "type": "tuple"
+        "internalType": "struct Lukywheel.Prize[]",
+        "name": "_prizes",
+        "type": "tuple[]"
       }
     ],
-    "name": "RewardLog",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
+    "name": "setPrizes",
+    "outputs": [
       {
-        "indexed": false,
-        "internalType": "address",
-        "name": "a",
-        "type": "address"
-      },
-      {
-        "indexed": false,
         "internalType": "uint256",
-        "name": "b",
+        "name": "sum",
         "type": "uint256"
       }
     ],
-    "name": "vrflog",
-    "type": "event"
+    "stateMutability": "nonpayable",
+    "type": "function"
   },
   {
     "inputs": [
       {
-        "internalType": "uint16",
-        "name": "_numTickets",
-        "type": "uint16"
+        "internalType": "uint256",
+        "name": "_newPrice",
+        "type": "uint256"
       }
     ],
-    "name": "buyTickets",
+    "name": "setWeiPrice",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "_spins",
+        "type": "uint256"
+      }
+    ],
+    "name": "spin",
     "outputs": [],
     "stateMutability": "payable",
     "type": "function"
   },
   {
     "inputs": [],
-    "name": "getContractBalance",
+    "name": "spinPrice",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "totalSpins",
     "outputs": [
       {
         "internalType": "uint256",
@@ -131,148 +267,24 @@ const abi = [
   {
     "inputs": [
       {
-        "internalType": "address",
+        "internalType": "address[]",
         "name": "_player",
-        "type": "address"
-      }
-    ],
-    "name": "getPlayer",
-    "outputs": [
-      {
-        "components": [
-          {
-            "internalType": "uint16",
-            "name": "tickets",
-            "type": "uint16"
-          },
-          {
-            "internalType": "uint16",
-            "name": "balance",
-            "type": "uint16"
-          },
-          {
-            "internalType": "uint16",
-            "name": "games",
-            "type": "uint16"
-          },
-          {
-            "internalType": "uint16",
-            "name": "wins",
-            "type": "uint16"
-          },
-          {
-            "internalType": "bool",
-            "name": "blocked",
-            "type": "bool"
-          },
-          {
-            "internalType": "address",
-            "name": "user",
-            "type": "address"
-          }
-        ],
-        "internalType": "struct Lukywheel.Player",
-        "name": "",
-        "type": "tuple"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "_player",
-        "type": "address"
+        "type": "address[]"
       },
       {
-        "components": [
-          {
-            "internalType": "uint16",
-            "name": "tickets",
-            "type": "uint16"
-          },
-          {
-            "internalType": "uint16",
-            "name": "balance",
-            "type": "uint16"
-          },
-          {
-            "internalType": "uint16",
-            "name": "games",
-            "type": "uint16"
-          },
-          {
-            "internalType": "uint16",
-            "name": "wins",
-            "type": "uint16"
-          },
-          {
-            "internalType": "bool",
-            "name": "blocked",
-            "type": "bool"
-          },
-          {
-            "internalType": "address",
-            "name": "user",
-            "type": "address"
-          }
-        ],
-        "internalType": "struct Lukywheel.Player",
-        "name": "_info",
-        "type": "tuple"
+        "internalType": "uint256",
+        "name": "_spins",
+        "type": "uint256"
+      },
+      {
+        "internalType": "bool",
+        "name": "_blocked",
+        "type": "bool"
       }
     ],
-    "name": "setPlayerInfo",
+    "name": "updatePlayer",
     "outputs": [],
     "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "uint16",
-        "name": "_newPrice",
-        "type": "uint16"
-      }
-    ],
-    "name": "setTicketPrice",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "spin",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "spinCount",
-    "outputs": [
-      {
-        "internalType": "uint16",
-        "name": "",
-        "type": "uint16"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "ticketPrice",
-    "outputs": [
-      {
-        "internalType": "uint16",
-        "name": "",
-        "type": "uint16"
-      }
-    ],
-    "stateMutability": "view",
     "type": "function"
   },
   {
@@ -283,7 +295,7 @@ const abi = [
         "type": "uint256"
       }
     ],
-    "name": "withdraw",
+    "name": "withdrawWei",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"

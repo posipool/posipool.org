@@ -27,7 +27,7 @@ export default function RouletteInfoCard(props: RouletteInfoCardProps){
 
     useEffect(()=> {
         console.log(props.rouletteWinner);
-        if(props.rouletteWinner?.name === '1 Spin')
+        if(props.rouletteWinner?.name === '1 SPIN')
         setBonusSpin(bonusSpin + 1)
     }, [props.rouletteWinner])
 
