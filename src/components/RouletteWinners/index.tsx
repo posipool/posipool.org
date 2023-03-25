@@ -20,12 +20,18 @@ export default function RouletteWinners(props: RouletteWinnersProps){
     },[])
 
     useEffect(()=> {
+        if(!!props.contract){
+            const newAward = props.contract.receipt.events[0].args[1].map((prize: string) => ({prize, transactionHash}))
+            localStorage.setItem('allPrizes', JSON.stringify([...awardHistory, ...newAward]))
+        } 
+    }, [props.contract])
+
+    useEffect(()=> {
         if(props.rouletteWinner){
             const allPrizes = [...awardHistory, {prize: props.rouletteWinner.name, transactionHash}]
             if (allPrizes.length > 16){
                 allPrizes.splice(0, allPrizes.length - 16)
             }
-            localStorage.setItem('allPrizes', JSON.stringify(allPrizes))
             setAwardHistory(allPrizes)
         }
     },[props.rouletteWinner])
