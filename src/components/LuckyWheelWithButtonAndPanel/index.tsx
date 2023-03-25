@@ -9,7 +9,7 @@ import Image from "next/image"
 import styled from "styled-components"
 import { SmartContract } from '@thirdweb-dev/sdk';
 import RouletteWinners from '../RouletteWinners';
-import { Button } from '@chakra-ui/react';
+import { Button, Grid, GridItem } from '@chakra-ui/react';
 import RouletteInfoCard from '../RouletteInfoCard';
 
   const LogoContainer = styled.div`
@@ -111,49 +111,72 @@ import RouletteInfoCard from '../RouletteInfoCard';
       return result[rnd]
     }
   return <>
+  <Grid
+    templateColumns={{ base: "repeat(1, 1fr)", md: "repeat(2, 1fr)", lg: "repeat(3, 1fr)" }}
+    gap={{ base: "1rem", md: "2rem" }}
+    autoFlow={{ base: "row", md: "row", lg: "column" }}
+    justifyItems={{ base: "center", md: "center", lg: "center" }}
+    alignItems={{ base: "center", md: "center", lg: "center" }}
+    px={{ base: "1rem", md: "2rem" }}
+    py={{ base: "1rem", md: "2rem" }}
+  >
+    <GridItem colSpan={{ base: 1, md: 1, lg: 1 }}
+    order={{ base: 3, md: 1, lg: 1 }}
+    >
+
   <RouletteWinners rouletteWinner={rouletteWinner} contract={drawResult}></RouletteWinners>
-    <Div id="rewardId">
-    <LogoContainer>
-      <Image src={'/posipool-shadow.png'} alt="Posi brand" width={65} height={65} />
-    </LogoContainer>
-    
-    <LuckyWheel
-        ref={myLucky}
-        defaultConfig={{speed:22, gutter: 1, accelerationTime, decelerationTime}}
-        // activeStyle={{fontColor: 'pink', fontSize: 25, fontWeight: 50, background: 'red', shadow: ''}}
-        width="350px"
-        height="350px"
-        prizes={prizes}
-        buttons={buttons}
-        // onStart={onStart}
-        onEnd={onEnd}
-        />
-        <div style={{
-          display: 'flex',
-          justifyContent: 'space-around',
-          alignItems: 'center',
-          minWidth: 195
-        }}>
-        <Button isDisabled={isSpinning || (amountOfSpin === 0)} marginTop={2} width={3} height={'34px'} onClick={handleDecrement}>-</Button>
-        <Web3Button
-        isDisabled={isSpinning || (amountOfSpin === 0)}
-        className={style['spin-button']}
-        accentColor="#0a93eb"
-        // onSuccess={(contract)=> setDrawResult(contract)}
-        onSubmit={()=> console.log('chamada enviada')}
-        contractAddress={props.contract.address}
-        contractAbi={props.contract.abi}
-        action={callRouletteContract}
-        key={5}
-        onError={(error)=> {
-          console.log(error)
-          setIsSpinning(false)
-          return error
-        }}
-        >{`${amountOfSpin} Spin`}</Web3Button>
-        <Button isDisabled={isSpinning || (amountOfSpin === 30)} marginTop={2} width={3} height={'34px'} onClick={handleIncrement}>+</Button>
-        </div>
-        </Div>
+    </GridItem>
+    <GridItem colSpan={{ base: 1, md: 1, lg: 1 }}
+    order={{ base: 1, md: 1, lg: 1 }}
+    >
+
+      <Div id="rewardId">
+      <LogoContainer>
+        <Image src={'/posipool-shadow.png'} alt="Posi brand" width={65} height={65} />
+      </LogoContainer>
+      <LuckyWheel
+          ref={myLucky}
+          defaultConfig={{speed:22, gutter: 1, accelerationTime, decelerationTime}}
+          // activeStyle={{fontColor: 'pink', fontSize: 25, fontWeight: 50, background: 'red', shadow: ''}}
+          width="350px"
+          height="350px"
+          prizes={prizes}
+          buttons={buttons}
+          // onStart={onStart}
+          onEnd={onEnd}
+          />
+          <div style={{
+            display: 'flex',
+            justifyContent: 'space-around',
+            alignItems: 'center',
+            minWidth: 195
+          }}>
+          <Button isDisabled={isSpinning || (amountOfSpin === 0)} marginTop={2} width={3} height={'34px'} onClick={handleDecrement}>-</Button>
+          <Web3Button
+          isDisabled={isSpinning || (amountOfSpin === 0)}
+          className={style['spin-button']}
+          accentColor="#0a93eb"
+          // onSuccess={(contract)=> setDrawResult(contract)}
+          onSubmit={()=> console.log('chamada enviada')}
+          contractAddress={props.contract.address}
+          contractAbi={props.contract.abi}
+          action={callRouletteContract}
+          key={5}
+          onError={(error)=> {
+            console.log(error)
+            setIsSpinning(false)
+            return error
+          }}
+          >{`${amountOfSpin} Spin`}</Web3Button>
+          <Button isDisabled={isSpinning || (amountOfSpin === 30)} marginTop={2} width={3} height={'34px'} onClick={handleIncrement}>+</Button>
+          </div>
+          </Div>
+        </GridItem>
+        <GridItem colSpan={{ base: 1, md: 1, lg: 1 }}
+          order={{ base: 2, md: 1, lg: 1 }}
+        >
         <RouletteInfoCard rouletteWinner={rouletteWinner} drawResult={drawResult} amountOfSpin={amountOfSpin} contract={props.contract.address}/>
+      </GridItem>
+      </Grid>
   </>
   }
