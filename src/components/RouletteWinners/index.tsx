@@ -10,6 +10,7 @@ export default function RouletteWinners(props: RouletteWinnersProps){
     const [awardHistory, setAwardHistory] = useState<PrizeHistory[]>([])
     const prizesName = ['LOSE', '2 POSI', '0.5 POSI', '3 POSI', '1 SPIN', '4 POSI', '5 POSI']
     const transactionHash = props.contract?.receipt.transactionHash
+    const timestamp = props.contract?.receipt
     // const { data, isLoading, error } = useContractEvents(props.contract, "spinEvent", {queryFilter: {filters:{address: useAddress()} } , subscribe: true});
     useEffect(()=> {
         const history: PrizeHistory[] = JSON.parse(localStorage.getItem('allPrizes') as string)
@@ -20,12 +21,22 @@ export default function RouletteWinners(props: RouletteWinnersProps){
     },[])
 
     useEffect(()=> {
+        if(!!props.contract){
+            const newAward = props.contract.receipt.events[0].args[1].map((prize: string) => ({prize, transactionHash}))
+            const allAwardHistory = [...awardHistory, ...newAward]
+            if (allAwardHistory.length > 16){
+                allAwardHistory.splice(0, allAwardHistory.length - 16)
+            }
+            localStorage.setItem('allPrizes', JSON.stringify(allAwardHistory))
+        } 
+    }, [props.contract])
+
+    useEffect(()=> {
         if(props.rouletteWinner){
             const allPrizes = [...awardHistory, {prize: props.rouletteWinner.name, transactionHash}]
             if (allPrizes.length > 16){
                 allPrizes.splice(0, allPrizes.length - 16)
             }
-            localStorage.setItem('allPrizes', JSON.stringify(allPrizes))
             setAwardHistory(allPrizes)
         }
     },[props.rouletteWinner])
