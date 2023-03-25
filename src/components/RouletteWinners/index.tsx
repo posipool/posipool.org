@@ -5,16 +5,17 @@ import {useEffect, useState} from 'react'
 export default function RouletteWinners(props: RouletteWinnersProps){
     interface PrizeHistory {
         prize: string
-        transactionHash: string | null
+        timestamp: string
     }
     const [awardHistory, setAwardHistory] = useState<PrizeHistory[]>([])
     const prizesName = ['LOSE', '2 POSI', '0.5 POSI', '3 POSI', '1 SPIN', '4 POSI', '5 POSI']
     const transactionHash = props.contract?.receipt.transactionHash
-    const timestamp = props.contract?.receipt
+    const dateInMilisseconds = props.contract?.receipt.events[0].args[2] * 1000
+    const timestamp = dateInMilisseconds? (new Date(dateInMilisseconds)).toLocaleString().replace(',', '') : ''
     // const { data, isLoading, error } = useContractEvents(props.contract, "spinEvent", {queryFilter: {filters:{address: useAddress()} } , subscribe: true});
     useEffect(()=> {
-        const history: PrizeHistory[] = JSON.parse(localStorage.getItem('allPrizes') as string)
-        if(history && history.length > 0){
+        const history: PrizeHistory[] = JSON.parse(localStorage.getItem('allPrizes') as string) || []
+        if(history.length > 0){
             console.log({history});
             setAwardHistory(history)
         }
@@ -22,7 +23,7 @@ export default function RouletteWinners(props: RouletteWinnersProps){
 
     useEffect(()=> {
         if(!!props.contract){
-            const newAward = props.contract.receipt.events[0].args[1].map((prize: string) => ({prize, transactionHash}))
+            const newAward = props.contract.receipt.events[0].args[1].map((prize: string) => ({prize, timestamp}))
             const allAwardHistory = [...awardHistory, ...newAward]
             if (allAwardHistory.length > 16){
                 allAwardHistory.splice(0, allAwardHistory.length - 16)
@@ -33,14 +34,13 @@ export default function RouletteWinners(props: RouletteWinnersProps){
 
     useEffect(()=> {
         if(props.rouletteWinner){
-            const allPrizes = [...awardHistory, {prize: props.rouletteWinner.name, transactionHash}]
+            const allPrizes = [...awardHistory, {prize: props.rouletteWinner.name, timestamp}]
             if (allPrizes.length > 16){
                 allPrizes.splice(0, allPrizes.length - 16)
             }
             setAwardHistory(allPrizes)
         }
     },[props.rouletteWinner])
-    {/* <Center> */}
     return <Card
             marginTop={5}
             backgroundColor="#1A202C"
@@ -51,23 +51,20 @@ export default function RouletteWinners(props: RouletteWinnersProps){
         >
             <CardBody>
                 <Grid>
-                    <Center fontSize={18} justifyContent={'space-between'}>
-                        <GridItem>Prize</GridItem>
-                        <GridItem>Transactions</GridItem>
-                        </Center>
-                        <Divider></Divider>
+                    <Grid templateColumns='repeat(4,1fr)' gap={6}>
+                        <GridItem colSpan={2}>Prizes</GridItem>
+                        <GridItem colSpan={2}>timestamp</GridItem>
+                    </Grid>
+                    <Divider></Divider>
                 {
                     awardHistory.length > 0 && awardHistory.slice(0,16).reverse().map((award: PrizeHistory, index: number) => {
-                        const shortenedHash: string = award.transactionHash?.slice(0, 6) + "..." + award.transactionHash?.slice(-4);
-                        return <Center paddingTop={0.49} display="flex" justifyContent="space-between" key={index}>
-                            <GridItem key={props.rouletteWinner?.id}>{prizesName[prizesName.indexOf(award.prize.replace('_', ' '))]}</GridItem>
-                            <GridItem><a style={{color: '#0182FF'}} href={`https://explorer.posichain.org/tx/${award.transactionHash}`} target="_blank" rel="noreferrer">{shortenedHash}</a></GridItem>
-                        </Center>
+                        return <Grid key={Date.now() + index} templateColumns='repeat(12,1fr)'>
+                            <GridItem key={props.rouletteWinner?.id} colSpan={5}>{prizesName[prizesName.indexOf(award.prize.replace('_', ' '))]}</GridItem>
+                            <GridItem colSpan={7}><a style={{color: '#0182FF'}} href={`https://explorer.posichain.org/tx/${transactionHash}`} target="_blank" rel="noreferrer">{award.timestamp}</a></GridItem>
+                        </Grid>
                     })
                 }
                 </Grid>
             </CardBody>
         </Card>
-            {/* </Center> */}
-        {/* <div>{error}</div> */}
-}
+ }
