@@ -14,6 +14,8 @@ import {
 import { CloseIcon, HamburgerIcon, MoonIcon, SunIcon } from '@chakra-ui/icons';
 import { ConnectWallet } from '@thirdweb-dev/react';
 import NextLink from 'next/link'
+import Logo from '../Logo';
+import Logo2 from '../Logo2';
 
 type Props = {
   href: string;
@@ -58,9 +60,24 @@ export default function Nav() {
               onClick={isOpen ? onClose : onOpen}
             />
           <HStack  spacing={8} alignItems={'center'} >
-            <Box>
-              <NavLink href='/'>Posi Pool</NavLink>
-            </Box>
+            <Link
+              href='/'
+              as={NextLink}
+              px={2}
+              py={1}
+              rounded={'md'}
+            >
+            <Logo width={30} style={{ marginRight: 15}}/>
+            </Link>
+            <Link
+                href='/'
+                as={NextLink}
+                px={2}
+                py={1}
+                rounded={'md'}
+              >
+              <Logo2 width={130} style={{ marginLeft: -60 }} />
+            </Link>
             <HStack
               as={'nav'}
               spacing={4}
