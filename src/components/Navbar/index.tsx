@@ -67,7 +67,7 @@ export default function Nav() {
               py={1}
               rounded={'md'}
             >
-            <Logo width={30} style={{ marginRight: 15}}/>
+            <Logo width={30} height={50} style={{ marginRight: 15}}/>
             </Link>
             <Link
                 href='/'
