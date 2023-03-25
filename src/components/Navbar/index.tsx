@@ -36,7 +36,7 @@ const NavLink = (props: Props) => (
     {props.children}
   </Link>
 );
-const MenuLinks = [{name:'Home',href:'/'}, {name: 'Roulettes', href: '/sardine-roulette'}];
+const MenuLinks = [{name:'Home',href:'/'}, {name: 'Roulette', href: '/sardine-roulette'}];
 
 export default function Nav() {
   // const { colorMode, toggleColorMode } = useColorMode();
