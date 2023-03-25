@@ -6,6 +6,7 @@ export default function RouletteWinners(props: RouletteWinnersProps){
     interface PrizeHistory {
         prize: string
         timestamp: string
+        transactionHash: string
     }
     const [awardHistory, setAwardHistory] = useState<PrizeHistory[]>([])
     const prizesName = ['LOSE', '2 POSI', '0.5 POSI', '3 POSI', '1 SPIN', '4 POSI', '5 POSI']
@@ -23,7 +24,7 @@ export default function RouletteWinners(props: RouletteWinnersProps){
 
     useEffect(()=> {
         if(!!props.contract){
-            const newAward = props.contract.receipt.events[0].args[1].map((prize: string) => ({prize, timestamp}))
+            const newAward = props.contract.receipt.events[0].args[1].map((prize: string) => ({prize, timestamp, transactionHash}))
             const allAwardHistory = [...awardHistory, ...newAward]
             if (allAwardHistory.length > 16){
                 allAwardHistory.splice(0, allAwardHistory.length - 16)
@@ -34,7 +35,7 @@ export default function RouletteWinners(props: RouletteWinnersProps){
 
     useEffect(()=> {
         if(props.rouletteWinner){
-            const allPrizes = [...awardHistory, {prize: props.rouletteWinner.name, timestamp}]
+            const allPrizes = [...awardHistory, {prize: props.rouletteWinner.name, timestamp, transactionHash}]
             if (allPrizes.length > 16){
                 allPrizes.splice(0, allPrizes.length - 16)
             }
@@ -60,7 +61,7 @@ export default function RouletteWinners(props: RouletteWinnersProps){
                     awardHistory.length > 0 && awardHistory.slice(0,16).reverse().map((award: PrizeHistory, index: number) => {
                         return <Grid key={Date.now() + index} templateColumns='repeat(12,1fr)'>
                             <GridItem key={props.rouletteWinner?.id} colSpan={5}>{prizesName[prizesName.indexOf(award.prize.replace('_', ' '))]}</GridItem>
-                            <GridItem colSpan={7}><a style={{color: '#0182FF'}} href={`https://explorer.posichain.org/tx/${transactionHash}`} target="_blank" rel="noreferrer">{award.timestamp}</a></GridItem>
+                            <GridItem colSpan={7}><a style={{color: '#0182FF'}} href={`https://explorer.posichain.org/tx/${award.transactionHash}`} target="_blank" rel="noreferrer">{award.timestamp}</a></GridItem>
                         </Grid>
                     })
                 }
