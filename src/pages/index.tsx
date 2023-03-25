@@ -5,6 +5,7 @@ import Logo from '../components/Logo'
 import BackgroundParticle from '../components/BackgroundParticles'
 import HomeStyle from './style'
 import { Description } from '../components/Card/style'
+import Logo2 from '../components/Logo2'
 
 export default function Home() {
   return (
@@ -20,14 +21,13 @@ export default function Home() {
       </Head>
       <HomeStyle>
         <Card>
-          <Logo />
-          <Description>Your financial freedom starts here!</Description>
-          <Button href="https://staking.posichain.org/validators/mainnet/0x6a29a4a51B26d35B304190aA716f99C8186d649A">
-            Posi Validator
-          </Button>
-        </Card>
-        {/* <Card></Card> */}
-
+          <Logo width={60} height={60} style={{ marginTop: 150}}/>
+          <Logo2 width={300}/>
+          <Description>Maximize your gains with Posi Pool</Description>
+            <Button href="https://staking.posichain.org/validators/mainnet/0x6a29a4a51B26d35B304190aA716f99C8186d649A">
+              Posi Validator
+            </Button>
+        </Card> 
         {/*
       <footer className={styles.footer}>
         <a target="_blank" rel="noopener noreferrer">
