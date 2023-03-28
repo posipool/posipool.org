@@ -1,6 +1,5 @@
 import '../styles/globals.css'
 import type { AppProps } from 'next/app'
-import { GlobalStyle } from './style'
 import { Poppins } from '@next/font/google'
 import { ThirdwebProvider } from "@thirdweb-dev/react";
 import { PosichainShard0, HarmonyShard0 } from '@thirdweb-dev/chains'
@@ -13,7 +12,6 @@ const poppins = Poppins({ weight: '500', subsets: ['latin'] })
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <main className={poppins.className}>
-      <GlobalStyle />
         <ThirdwebProvider 
       supportedChains={[]}
        activeChain={PosichainShard0}
