@@ -6,7 +6,6 @@ import {
   useColorModeValue,
   useDisclosure,
   Stack,
-  useColorMode,
   HStack,
   IconButton,
   Link
@@ -39,7 +38,6 @@ const NavLink = (props: Props) => (
 const MenuLinks = [{name:'Home',href:'/'}, {name: 'Roulette', href: '/sardine-roulette'}];
 
 export default function Nav() {
-  // const { colorMode, toggleColorMode } = useColorMode();
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (

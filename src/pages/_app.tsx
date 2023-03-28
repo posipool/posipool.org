@@ -5,7 +5,7 @@ import { ThirdwebProvider } from "@thirdweb-dev/react";
 import { PosichainShard0, HarmonyShard0 } from '@thirdweb-dev/chains'
 import Navbar from '../components/Navbar'
 import { ChakraProvider } from '@chakra-ui/react'
-import theme from '../_theme'
+import theme from '../styles/theme'
 
 const poppins = Poppins({ weight: '500', subsets: ['latin'] })
 
