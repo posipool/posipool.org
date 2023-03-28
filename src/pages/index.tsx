@@ -3,7 +3,6 @@ import Button from '../components/Button'
 import Card from '../components/Card'
 import Logo from '../components/Logo'
 import BackgroundParticle from '../components/BackgroundParticles'
-import HomeStyle from './style'
 import { Description } from '../components/Card/style'
 import Logo2 from '../components/Logo2'
 
@@ -19,7 +18,6 @@ export default function Home() {
         <meta property="og:image" content="https://posipool.org/posipool-logo-metatags.svg" />
         <meta property="og:type" content="website" />
       </Head>
-      <HomeStyle>
         <Card>
           <Logo width={60} height={60} style={{ marginTop: 150}}/>
           <Logo2 width={300}/>
@@ -37,7 +35,6 @@ export default function Home() {
           </span>
         </a>
       </footer>*/}
-      </HomeStyle>
       <BackgroundParticle />
     </>
   )
