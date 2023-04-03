@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "format": "prettier --write \"**/*.js\" \"**/*.jsx\" \"**/*.ts\" \"**/*.tsx\""
   },
   "dependencies": {
     "@chakra-ui/icons": "^2.0.17",
@@ -40,6 +41,7 @@
   "devDependencies": {
     "@types/styled-components": "^5.1.26",
     "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.2.1",
     "prettier": "^2.7.1"
   }
 }
