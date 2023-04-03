@@ -6,11 +6,11 @@ import {
   ModalBody,
   ModalCloseButton,
   Center,
-} from "@chakra-ui/react";
-import { ModalProps } from "./types";
+} from '@chakra-ui/react'
+import { ModalProps } from './types'
 
 export default function Modal(props: ModalProps) {
-  const {children, title, ...rest} = props
+  const { children, title, ...rest } = props
   return (
     <>
       <ChakraModal {...rest} isCentered>
@@ -20,9 +20,7 @@ export default function Modal(props: ModalProps) {
             <ModalHeader>{title}</ModalHeader>
           </Center>
           <ModalCloseButton />
-            <ModalBody>
-              {children}
-            </ModalBody>
+          <ModalBody>{children}</ModalBody>
         </ModalContent>
       </ChakraModal>
     </>

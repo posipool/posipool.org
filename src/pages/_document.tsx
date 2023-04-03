@@ -1,5 +1,5 @@
 import { ColorModeScript } from '@chakra-ui/react'
-import Document, { DocumentContext,  Head, Html, Main, NextScript } from 'next/document'
+import Document, { DocumentContext, Head, Html, Main, NextScript } from 'next/document'
 import theme from '../styles/theme'
 
 export default class MyDocument extends Document {
@@ -7,18 +7,16 @@ export default class MyDocument extends Document {
     return Document.getInitialProps(ctx)
   }
 
-  render () {
+  render() {
     return (
-        <Html>
-            <Head>
-                
-            </Head>
-            <body>
-                <ColorModeScript initialColorMode={theme.config.initialColorMode}/>
-                <Main />
-                <NextScript />
-            </body>
-        </Html>
+      <Html>
+        <Head></Head>
+        <body>
+          <ColorModeScript initialColorMode={theme.config.initialColorMode} />
+          <Main />
+          <NextScript />
+        </body>
+      </Html>
     )
   }
 }

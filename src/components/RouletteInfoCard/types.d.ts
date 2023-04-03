@@ -1,10 +1,10 @@
 interface RoulettePlayerInfo {
-    spins: number
+  spins: number
 }
 
 interface RouletteInfoCardProps {
-    amountOfSpin: number
-    contract: string
-    drawResult: any
-    rouletteWinner: {id: number, name: string} | null
+  amountOfSpin: number
+  contract: string
+  drawResult: any
+  rouletteWinner: { id: number; name: string } | null
 }
