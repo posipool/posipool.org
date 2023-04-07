@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import styled from 'styled-components'
 import Wheel from '../../components/LuckWheel'
-import { ConnectWallet, Web3Button } from '@thirdweb-dev/react'
+import { Web3Button } from '@thirdweb-dev/react'
 
 const LogoContainer = styled.div`
   z-index: 999;

@@ -1,5 +1,5 @@
-import { useAddress, useContract, useContractEvents } from '@thirdweb-dev/react'
-import { Card, CardBody, Center, Divider, Grid, GridItem } from '@chakra-ui/react'
+// import { useAddress, useContract, useContractEvents } from '@thirdweb-dev/react'
+import { Card, CardBody, Divider, Grid, GridItem } from '@chakra-ui/react'
 import { useEffect, useState } from 'react'
 
 export default function RouletteWinners(props: RouletteWinnersProps) {
@@ -23,7 +23,7 @@ export default function RouletteWinners(props: RouletteWinnersProps) {
   }, [])
 
   useEffect(() => {
-    if (!!props.contract) {
+    if (props.contract) {
       const newAward = props.contract.receipt.events[0].args[1].map((prize: string) => ({
         prize,
         timestamp,

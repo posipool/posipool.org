@@ -3,7 +3,7 @@ import { LuckyWheel } from '@lucky-canvas/react'
 import { useReward } from 'react-rewards'
 import Div from './style'
 
-export default function Wheel(props) {
+export default function Wheel() {
   const [prize, setPrize] = useState()
   const myLucky = React.useRef()
   const { reward, isAnimating } = useReward('rewardId', 'confetti', {

@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 //@ts-ignore
 import { LuckWheelPrize, LuckyWheel } from '@lucky-canvas/react'
 import { useReward } from 'react-rewards'
 import Div from './style'
-import { Web3Button, useAddress, useContract } from '@thirdweb-dev/react'
+import { Web3Button, useAddress } from '@thirdweb-dev/react'
 import style from './style.module.css'
 import Image from 'next/image'
 import styled from 'styled-components'
@@ -28,7 +28,7 @@ export default function LuckyWheelWithButtonAndPanel(props: WheelProps) {
   const [amountOfSpin, setAmountOfSpin] = useState(1)
   const [drawResult, setDrawResult] = useState<SmartContract | any>()
   const [rouletteWinner, setRouletteWinners] = useState<{ id: number; name: string } | null>(null)
-  const { reward, isAnimating } = useReward('rewardId', 'confetti', { zIndex: 9999999, lifetime: 200, angle: 85 })
+  const { reward } = useReward('rewardId', 'confetti', { zIndex: 9999999, lifetime: 200, angle: 85 })
   const background = '#0865a1'
   const buttons = [
     { radius: '30px', background: 'rgb(0, 53, 87)' },
@@ -124,8 +124,8 @@ export default function LuckyWheelWithButtonAndPanel(props: WheelProps) {
   }
 
   function getRandomIndex(_prize: string): number {
-    let result = prizesName.map((x, i) => (x == _prize.replace('_', ' ') ? i : -1)).filter((i) => i >= 0)
-    let rnd = parseInt((result.length - Math.random() * result.length).toString())
+    const result = prizesName.map((x, i) => (x == _prize.replace('_', ' ') ? i : -1)).filter((i) => i >= 0)
+    const rnd = parseInt((result.length - Math.random() * result.length).toString())
     return result[rnd]
   }
   return (

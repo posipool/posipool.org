@@ -3,7 +3,6 @@ import { Card, CardBody, CardHeader, Center, Divider, Grid, GridItem } from '@ch
 import { useAddress, useContract } from '@thirdweb-dev/react'
 
 export default function RouletteInfoCard(props: RouletteInfoCardProps) {
-  const [playerInfo, setPlayerInfo] = useState<RoulettePlayerInfo>({ spins: 0 })
   const [bonusSpin, setBonusSpin] = useState(0)
   const [bonusSpinUsed, setBonusSpinUsed] = useState(0)
   const { contract } = useContract(props.contract)
@@ -13,7 +12,6 @@ export default function RouletteInfoCard(props: RouletteInfoCardProps) {
   useEffect(() => {
     address &&
       contract?.call('playerInfo', address).then((data) => {
-        setPlayerInfo(data)
         setBonusSpin(Number(data.spins))
       })
   }, [address])

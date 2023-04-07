@@ -1,5 +1,5 @@
 import { useCallback } from 'react'
-import type { Container, Engine } from 'tsparticles-engine'
+import type { Engine } from 'tsparticles-engine'
 import Particles from 'react-tsparticles'
 import { loadFull } from 'tsparticles'
 
@@ -8,7 +8,7 @@ function BackgroundParticles() {
     await loadFull(engine)
   }, [])
 
-  const particlesLoaded = useCallback(async (container: Container | undefined) => {}, [])
+  const particlesLoaded = useCallback(async () => {}, [])
   return (
     <Particles
       id="tsparticles"

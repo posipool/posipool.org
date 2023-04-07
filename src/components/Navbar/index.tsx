@@ -1,6 +1,6 @@
 import { ReactNode } from 'react'
-import { Box, Flex, Button, useColorModeValue, useDisclosure, Stack, HStack, IconButton, Link } from '@chakra-ui/react'
-import { CloseIcon, HamburgerIcon, MoonIcon, SunIcon } from '@chakra-ui/icons'
+import { Box, Flex, useColorModeValue, useDisclosure, Stack, HStack, IconButton, Link } from '@chakra-ui/react'
+import { CloseIcon, HamburgerIcon } from '@chakra-ui/icons'
 import { ConnectWallet } from '@thirdweb-dev/react'
 import NextLink from 'next/link'
 import Logo from '../Logo'
