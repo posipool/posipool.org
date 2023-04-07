@@ -7,6 +7,12 @@
     {
       "files": ["**/*.d.ts"],
       "rules": { "no-unused-vars": "off" }
+    },
+    {
+      "files": ["**/*.ts", "**/*.tsx"],
+      "rules": {
+        "no-undef": "off"
+      }
     }
   ]
 }
