@@ -13,6 +13,17 @@
       "rules": {
         "no-undef": "off"
       }
+    },
+    {
+      "files": [""],
+      "rules": {
+        "prettier/prettier": [
+          "error",
+          {
+            "endOfLine": "auto"
+          }
+        ]
+      }
     }
   ]
 }
