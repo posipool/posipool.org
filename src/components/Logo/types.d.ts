@@ -1,5 +1,3 @@
 import { SVGProps } from 'react'
 
-interface LogoProps extends SVGProps<SVGSVGElement> {
-
-}
+interface LogoProps extends SVGProps<SVGSVGElement> {}

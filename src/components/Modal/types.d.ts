@@ -1,5 +1,5 @@
-import { ModalProps as chakraModalProps } from "@chakra-ui/react"
+import { ModalProps as chakraModalProps } from '@chakra-ui/react'
 
 interface ModalProps extends chakraModalProps {
-    title: string
+  title: string
 }

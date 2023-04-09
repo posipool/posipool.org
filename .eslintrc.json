@@ -1,3 +1,18 @@
 {
-  "extends": ["next/core-web-vitals", "prettier"]
+  "extends": ["next/core-web-vitals", "prettier", "eslint:recommended", "plugin:prettier/recommended"],
+  "rules": {
+    "prefer-const": "error"
+  },
+  "overrides": [
+    {
+      "files": ["**/*.d.ts"],
+      "rules": { "no-unused-vars": "off" }
+    },
+    {
+      "files": ["**/*.ts", "**/*.tsx"],
+      "rules": {
+        "no-undef": "off"
+      }
+    }
+  ]
 }
