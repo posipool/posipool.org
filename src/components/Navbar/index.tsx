@@ -73,7 +73,7 @@ export default function Nav() {
                 {colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
               </Button>
             </Stack> */}
-            <ConnectWallet accentColor="#1E90FF" colorMode="dark" className="btn-connect-wallet" />
+            <ConnectWallet theme="dark" />
           </Flex>
         </Flex>
         {isOpen ? (

@@ -4,7 +4,6 @@ import { LuckWheelPrize, LuckyWheel } from '@lucky-canvas/react'
 import { useReward } from 'react-rewards'
 import Div from './style'
 import { Web3Button, useAddress } from '@thirdweb-dev/react'
-import style from './style.module.css'
 import Image from 'next/image'
 import styled from 'styled-components'
 import { SmartContract } from '@thirdweb-dev/sdk'
@@ -91,8 +90,8 @@ export default function LuckyWheelWithButtonAndPanel(props: WheelProps) {
   }
 
   async function callRouletteContract(contract: SmartContract) {
-    const transactionWeiCost = (await contract.call('getWeiPrice', address, amountOfSpin))._hex
-    const resultsList: any = await contract.call('spin', amountOfSpin, {
+    const transactionWeiCost = (await contract.call('getWeiPrice', [address, amountOfSpin]))._hex
+    const resultsList: any = await contract.call('spin', [amountOfSpin], {
       gasLimit: 250000,
       value: transactionWeiCost,
     })
@@ -177,20 +176,23 @@ export default function LuckyWheelWithButtonAndPanel(props: WheelProps) {
               </Button>
               <Web3Button
                 isDisabled={isSpinning || amountOfSpin === 0}
-                className={style['spin-button']}
-                accentColor="#0a93eb"
+                style={{
+                  marginTop: 10,
+                  minWidth: '80px',
+                }}
                 // onSuccess={(contract)=> setDrawResult(contract)}
                 onSubmit={() => console.log('chamada enviada')}
                 contractAddress={props.contract.address}
                 contractAbi={props.contract.abi}
                 action={callRouletteContract}
-                key={5}
                 onError={(error) => {
                   console.log(error)
                   setIsSpinning(false)
                   return error
                 }}
-              >{`${amountOfSpin} Spin`}</Web3Button>
+              >
+                {`${amountOfSpin} Spin`}
+              </Web3Button>
               <Button
                 isDisabled={isSpinning || amountOfSpin === 30}
                 marginTop={2}

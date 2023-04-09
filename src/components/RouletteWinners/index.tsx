@@ -35,6 +35,7 @@ export default function RouletteWinners(props: RouletteWinnersProps) {
       }
       localStorage.setItem('allPrizes', JSON.stringify(allAwardHistory))
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.contract])
 
   useEffect(() => {
@@ -45,6 +46,7 @@ export default function RouletteWinners(props: RouletteWinnersProps) {
       }
       setAwardHistory(allPrizes)
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.rouletteWinner])
   return (
     <Card marginTop={5} backgroundColor="#1A202C" borderColor="white" borderWidth={1} width={350} height={450}>

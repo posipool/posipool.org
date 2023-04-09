@@ -11,9 +11,12 @@ export default function RouletteInfoCard(props: RouletteInfoCardProps) {
 
   useEffect(() => {
     address &&
-      contract?.call('playerInfo', address).then((data) => {
-        setBonusSpin(Number(data.spins))
+      contract?.call('playerInfo', [address]).then((value: any) => {
+        // data.then((value) => {
+        setBonusSpin(Number(value.spins))
+        // })
       })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [address])
 
   useEffect(() => {
@@ -22,11 +25,13 @@ export default function RouletteInfoCard(props: RouletteInfoCardProps) {
     } else {
       setBonusSpin(0)
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.drawResult])
 
   useEffect(() => {
     console.log(props.rouletteWinner)
     if (props.rouletteWinner?.name === '1 SPIN') setBonusSpin(bonusSpin + 1)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.rouletteWinner])
 
   useEffect(() => {
