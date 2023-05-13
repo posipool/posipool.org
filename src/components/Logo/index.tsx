@@ -1,7 +1,8 @@
-import { LogoProps } from "./types";
+import { LogoProps } from './types'
 
 export default function Logo(props: LogoProps) {
-  return <>
+  return (
+    <>
       <svg
         version="1.0"
         xmlns="http://www.w3.org/2000/svg"
@@ -11,9 +12,13 @@ export default function Logo(props: LogoProps) {
         preserveAspectRatio="xMidYMid meet"
         {...props}
       >
-        <g transform="translate(0.000000,1344.000000) scale(0.100000,-0.100000)"
-        fill={props.color || "#0a93eb"} stroke={props.stroke || "none"}>
-          <path d="M3565 11549 c-22 -4 -98 -15 -170 -24 -71 -9 -143 -20 -160 -25 -16
+        <g
+          transform="translate(0.000000,1344.000000) scale(0.100000,-0.100000)"
+          fill={props.color || '#0a93eb'}
+          stroke={props.stroke || 'none'}
+        >
+          <path
+            d="M3565 11549 c-22 -4 -98 -15 -170 -24 -71 -9 -143 -20 -160 -25 -16
           -4 -66 -16 -110 -25 -44 -10 -89 -21 -100 -25 -11 -5 -60 -20 -110 -35 -49
           -14 -106 -32 -125 -40 -19 -8 -46 -17 -60 -21 -24 -6 -59 -21 -168 -70 -29
           -13 -58 -24 -65 -24 -7 0 -17 -4 -22 -9 -6 -5 -58 -34 -117 -65 -59 -31 -128
@@ -82,8 +87,10 @@ export default function Logo(props: LogoProps) {
           32 -26 66 -31 75 -6 10 -21 56 -35 103 -71 233 -93 519 -57 740 32 197 40 232
           88 360 33 90 152 326 178 353 11 12 29 36 40 52 88 140 280 323 470 447 67 43
           205 118 219 118 3 0 25 9 49 19 69 31 159 58 252 76 22 5 47 10 55 12 103 29
-          274 31 2805 31 2134 1 2590 -1 2690 -13z"/>
+          274 31 2805 31 2134 1 2590 -1 2690 -13z"
+          />
         </g>
       </svg>
     </>
+  )
 }

@@ -1,4 +1,4 @@
-import { PropsWithChildren, ReactNode } from 'react'
+import { PropsWithChildren } from 'react'
 import { CardStyle } from './style'
 
 function Card(props: PropsWithChildren) {
