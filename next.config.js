@@ -10,7 +10,10 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   // Your existing module.exports
-
+  compiler: {
+    // ssr and displayName are configured by default
+    styledComponents: true,
+  },
   sentry: {
     // Use `hidden-source-map` rather than `source-map` as the Webpack `devtool`
     // for client-side builds. (This will be the default starting in
