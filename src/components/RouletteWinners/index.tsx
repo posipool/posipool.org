@@ -1,6 +1,7 @@
 // import { useAddress, useContract, useContractEvents } from '@thirdweb-dev/react'
-import { Card, CardBody, Divider, Grid, GridItem } from '@chakra-ui/react'
+import { CardBody, Divider, Grid, GridItem } from '@chakra-ui/react'
 import { useEffect, useState } from 'react'
+import Card from '../Card'
 
 export default function RouletteWinners(props: RouletteWinnersProps) {
   interface PrizeHistory {
@@ -49,7 +50,7 @@ export default function RouletteWinners(props: RouletteWinnersProps) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.rouletteWinner])
   return (
-    <Card marginTop={5} backgroundColor="#1A202C" borderColor="white" borderWidth={1} width={350} height={450}>
+    <Card marginTop={5} width={350} height={450}>
       <CardBody>
         <Grid>
           <Grid templateColumns="repeat(4,1fr)" gap={6}>

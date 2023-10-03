@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
-import { Card, CardBody, CardHeader, Center, Divider, Grid, GridItem } from '@chakra-ui/react'
+import { CardBody, CardHeader, Center, Divider, Grid, GridItem } from '@chakra-ui/react'
 import { useAddress, useContract } from '@thirdweb-dev/react'
+import Card from '../Card'
 
 export default function RouletteInfoCard(props: RouletteInfoCardProps) {
   const [bonusSpin, setBonusSpin] = useState(0)
@@ -38,7 +39,7 @@ export default function RouletteInfoCard(props: RouletteInfoCardProps) {
     setBonusSpinUsed(bonusSpin - (bonusSpin - props.amountOfSpin))
   }, [bonusSpin, props.amountOfSpin])
   return (
-    <Card marginTop={5} backgroundColor="#1A202C" borderColor="white" borderWidth={1} width={350} height={450}>
+    <Card marginTop={5} width={350} height={450}>
       <Center>
         <CardHeader fontSize={20}>My Spin Info</CardHeader>
       </Center>
@@ -68,7 +69,6 @@ export default function RouletteInfoCard(props: RouletteInfoCardProps) {
           <GridItem colSpan={1}>{spinCost > 0 ? spinCost : 0} POSI</GridItem>
         </Grid>
       </CardBody>
-      <Card></Card>
     </Card>
   )
 }

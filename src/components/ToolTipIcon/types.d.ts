@@ -1,0 +1,3 @@
+interface ToolTipIconProps {
+  text: string
+}

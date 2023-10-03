@@ -1,9 +1,9 @@
 import Head from 'next/head'
 import Button from '../components/Button'
-import Card from '../components/Card'
+import Card from '../components/Card2'
 import Logo from '../components/Logo'
 import BackgroundParticle from '../components/BackgroundParticles'
-import { Description } from '../components/Card/style'
+import { Description } from '../components/Card2/style'
 import Logo2 from '../components/Logo2'
 
 export default function Home() {
